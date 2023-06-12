@@ -11,6 +11,7 @@
 - Explorar e visualizar os dados para entender sua estrutura, características, distribuições, correlações e possíveis problemas.
 
 ## Pré-processamento de dados:
+- Transformação das variáveis categóricas em variáveis binárias
 - Limpeza de Missings, dados ruidosos ou inconsistentes e a seleção de recursos relevantes.
 - Normalização, padronização, codificação de variáveis categóricas, 
 - Divisão dos dados em conjuntos de treinamento, validação e teste. (validação cruzada)
