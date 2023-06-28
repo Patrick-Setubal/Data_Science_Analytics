@@ -28,3 +28,9 @@
 - SVC(*, C=1.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False, tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape='ovr', break_ties=False, random_state=None)
   - ...
 - ![image](https://github.com/Patrick-Setubal/Data_Science_Analytics/assets/125592481/683d13d3-e314-43c8-ab17-b48426379b1d)
+
+## Random ForestCLassifier
+- Pontuações aleatorias para cada descição e melhorando elas a cada tentativa
+- sklearn.ensemble.RandomForestClassifier
+![image](https://github.com/Patrick-Setubal/Data_Science_Analytics/assets/125592481/f78fd49a-0343-467d-bf79-3cb07a723c3f)
+
