@@ -15,7 +15,7 @@
 - ![image](https://github.com/Patrick-Setubal/Data_Science_Analytics/assets/125592481/9f26ebdd-29f8-4e06-8677-ec81f7dfa5ad)
 
 ## Naive Bayes GaussianNB
-- Analisa pela probailidade das Features
+- Analisa pela probailidade de cada Features
 - sklearn.naive_bayes.GaussianNB
 - GaussianNB(*, priors=None, var_smoothing=1e-09)
   - ...
