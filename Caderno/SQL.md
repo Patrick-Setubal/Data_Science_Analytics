@@ -1,4 +1,7 @@
+    Documentation = https://www.w3schools.com/mysql/mysql_ref_functions.asp
+    
     USE database;
+    
     
     SELECT A.CPF, A.Col_2, B.CPF, B.Col_2 AS Col_B_2, B.Contry
       FROM table_a A LEFT JOIN tabel_b B ON A.CPF = B.CPF
@@ -9,5 +12,29 @@
     
     SELECT DISTINCT = No Duplicated
     SELECT A.CPF, COUNT(*) FROM table_compras A GROUP BY A.CPF ORDER BY A.CPF;
+    
+    select * from tabela_de_clientes 
+	    where bairro in (select distinct bairro from tabela_de_vendedores);
+
+    select X.embalagem, x.preco_maximo from 
+    	(select embalagem, max(preco_de_lista) as preco_maximo 
+        from tabela_de_produtos	group by embalagem) X 
+        WHERE X.PRECO_MAXIMO >=10;
+
+    USE `sucos_vendas`;
+    CREATE  OR REPLACE VIEW `VW_MAIORES_EMBALAGENS` AS 
+    	select embalagem, max(preco_de_lista) as preco_maximo 
+        from tabela_de_produtos group by embalagem;
+
+    select A.nome_do_produto, A.embalagem, A.preco_de_lista, X.preco_maximo
+	from tabela_de_produtos A inner join vw_maiores_embalagens X
+    on A.embalagem = X.embalagem;
+
+    select 
+    	A.nome_do_produto, A.embalagem, A.preco_de_lista,
+        round(A.preco_de_lista / X.preco_maximo * 100 , 2 ) as 'PERCENTUAL(%)',
+        X.preco_maximo     
+    		from tabela_de_produtos A inner join vw_maiores_embalagens X
+    		on A.embalagem = X.embalagem;
 
     
