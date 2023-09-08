@@ -37,4 +37,18 @@
     		from tabela_de_produtos A inner join vw_maiores_embalagens X
     		on A.embalagem = X.embalagem;
 
+
+
+	select 
+ 	    NF.CPF, TC.NOME,
+	    DATE_FORMAT(NF.DATA_VENDA,'%Y-%m' ) as 'Mes_Ano', 
+	    SUM(INF.QUANTIDADE) as 'Quantidade_Vendas',
+	    MAX(TC.VOLUME_DE_COMPRA) as 'Quantidade_Limite',   
+	    case when (MAX(TC.VOLUME_DE_COMPRA) - SUM(INF.QUANTIDADE)) < 0 then 'Inválida'
+	    else 'Válida' end as Status_Venda
+			from notas_fiscais NF 
+				inner join itens_notas_fiscais INF on NF.numero = INF.numero
+	            		inner join tabela_de_clientes TC on TC.CPF = NF.CPF
+				group by NF.CPF, TC.NOME, Mes_Ano;
+
     
