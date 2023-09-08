@@ -51,4 +51,31 @@
 	            		inner join tabela_de_clientes TC on TC.CPF = NF.CPF
 				group by NF.CPF, TC.NOME, Mes_Ano;
 
+
+
+    select 
+	Venda_SABOR.Sabor, 
+    Venda_SABOR.ANO, 
+    Venda_SABOR.Total_Por_Sabor,
+    ROUND(Venda_SABOR.Total_Por_Sabor/Venda_Total.Venda_Total,2)*100 AS 'Percentual'
+    from (select 
+		TP.SABOR, 
+		YEAR(NF.DATA_VENDA) as 'Ano', 
+		SUM(INF.QUANTIDADE) AS 'Total_Por_Sabor'
+		from itens_notas_fiscais INF
+		INNER JOIN tabela_de_produtos TP ON INF.CODIGO_DO_PRODUTO = TP.CODIGO_DO_PRODUTO
+		INNER JOIN notas_fiscais NF ON INF.NUMERO = NF.NUMERO
+		WHERE YEAR(NF.DATA_VENDA) = 2016
+		GROUP BY TP.SABOR, Ano) as Venda_SABOR
+    INNER JOIN (select 
+		YEAR(NF.DATA_VENDA) as 'Ano', 
+		SUM(INF.QUANTIDADE) AS 'Venda_Total'
+		from itens_notas_fiscais INF
+			INNER JOIN tabela_de_produtos TP ON INF.CODIGO_DO_PRODUTO = TP.CODIGO_DO_PRODUTO
+			INNER JOIN notas_fiscais NF ON INF.NUMERO = NF.NUMERO
+			WHERE YEAR(NF.DATA_VENDA) = 2016
+			GROUP BY  Ano) as Venda_Total 
+	ON Venda_SABOR.ANO = Venda_Total.ANO
+	order by Venda_SABOR.Total_Por_Sabor DESC
+
     
