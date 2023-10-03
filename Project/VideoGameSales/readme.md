@@ -1,1 +1,1 @@
-a
+The aim of this project, using the Video Game Sales dataset, is to conduct exploratory analysis to gain a deeper understanding of the data, identify patterns, perform data cleaning, and calculate key performance indicators (KPIs). Subsequently, a dashboard will be created to visualize the insights discovered.
